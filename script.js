@@ -2,175 +2,193 @@
    IT-GIRLS — INTERACTIVE FUNCTIONS
 ========================================================= */
 
+document.addEventListener("DOMContentLoaded", () => {
 
-/* =========================================================
-   ARTICLE ACCORDIONS
-========================================================= */
+    /* =====================================================
+       ARTICLE ACCORDIONS
+    ===================================================== */
 
-const articles = document.querySelectorAll(".article");
-
-document.querySelectorAll(".article-header").forEach(button => {
-
-    button.addEventListener("click", () => {
-
-        const article = button.closest(".article");
-
-        article.classList.toggle("open");
-
-    });
-
-});
-
-
-
-/* =========================================================
-   EXPAND / COLLAPSE ALL
-========================================================= */
-
-const expandButton = document.getElementById("expandAll");
-
-expandButton.addEventListener("click", () => {
-
-    const allOpen = [...articles].every(article =>
-        article.classList.contains("open")
-    );
-
+    const articles = document.querySelectorAll(".article");
 
     articles.forEach(article => {
 
-        article.classList.toggle("open", !allOpen);
+        const header = article.querySelector(".article-header");
+
+        if (!header) return;
+
+        header.addEventListener("click", () => {
+
+            article.classList.toggle("open");
+
+        });
 
     });
 
 
-    expandButton.textContent =
-        allOpen ? "Expand all" : "Collapse all";
+    /* =====================================================
+       EXPAND / COLLAPSE ALL
+    ===================================================== */
 
-});
+    const expandButton =
+        document.getElementById("expandAll");
 
+    if (expandButton) {
 
+        expandButton.addEventListener("click", () => {
 
-/* =========================================================
-   ARTICLE SEARCH
-========================================================= */
+            const allOpen =
+                [...articles].every(article =>
+                    article.classList.contains("open")
+                );
 
-const searchInput = document.getElementById("search");
+            articles.forEach(article => {
 
-searchInput.addEventListener("input", () => {
+                if (allOpen) {
 
-    const query = searchInput.value.toLowerCase().trim();
+                    article.classList.remove("open");
 
+                } else {
 
-    articles.forEach(article => {
+                    article.classList.add("open");
 
-        const searchableText =
-            article.dataset.search.toLowerCase();
+                }
 
+            });
 
-        if (
-            query === "" ||
-            searchableText.includes(query)
-        ) {
+            expandButton.textContent =
+                allOpen
+                    ? "Expand all"
+                    : "Collapse all";
 
-            article.style.display = "";
-
-        } else {
-
-            article.style.display = "none";
-
-        }
-
-    });
-
-});
-
-
-
-/* =========================================================
-   MOBILE MENU
-========================================================= */
-
-const menuButton = document.getElementById("menuButton");
-const mobileMenu = document.getElementById("mobileMenu");
-
-
-menuButton.addEventListener("click", () => {
-
-    mobileMenu.classList.toggle("open");
-
-
-    if (mobileMenu.classList.contains("open")) {
-
-        menuButton.textContent = "×";
-
-    } else {
-
-        menuButton.textContent = "☰";
+        });
 
     }
 
-});
+
+    /* =====================================================
+       ARTICLE SEARCH
+    ===================================================== */
+
+    const searchInput =
+        document.getElementById("search");
+
+    if (searchInput) {
+
+        searchInput.addEventListener("input", () => {
+
+            const query =
+                searchInput.value
+                    .toLowerCase()
+                    .trim();
+
+            articles.forEach(article => {
+
+                const text =
+                    article.textContent.toLowerCase();
+
+                article.style.display =
+                    text.includes(query)
+                        ? ""
+                        : "none";
+
+            });
+
+        });
+
+    }
 
 
-/* Close menu after clicking a link */
+    /* =====================================================
+       MOBILE MENU
+    ===================================================== */
 
-document.querySelectorAll(".mobile-menu a").forEach(link => {
+    const menuButton =
+        document.getElementById("menuButton");
 
-    link.addEventListener("click", () => {
+    const mobileMenu =
+        document.getElementById("mobileMenu");
 
-        mobileMenu.classList.remove("open");
+    if (menuButton && mobileMenu) {
 
-        menuButton.textContent = "☰";
+        menuButton.addEventListener("click", () => {
 
-    });
+            mobileMenu.classList.toggle("open");
 
-});
+            menuButton.textContent =
+                mobileMenu.classList.contains("open")
+                    ? "×"
+                    : "☰";
 
-
-
-/* =========================================================
-   BACK TO TOP
-========================================================= */
-
-document.getElementById("backTop").addEventListener("click", () => {
-
-    window.scrollTo({
-
-        top: 0,
-
-        behavior: "smooth"
-
-    });
-
-});
+        });
 
 
+        mobileMenu.querySelectorAll("a").forEach(link => {
 
-/* =========================================================
-   OPEN ARTICLE FROM URL HASH
-   Example:
-   index.html#article-ix
-========================================================= */
+            link.addEventListener("click", () => {
 
-if (window.location.hash) {
+                mobileMenu.classList.remove("open");
 
-    const target = document.querySelector(
-        window.location.hash
-    );
+                menuButton.textContent = "☰";
+
+            });
+
+        });
+
+    }
 
 
-    if (target && target.classList.contains("article")) {
+    /* =====================================================
+       BACK TO TOP
+    ===================================================== */
 
-        target.classList.add("open");
+    const backTop =
+        document.getElementById("backTop");
 
-        setTimeout(() => {
+    if (backTop) {
 
-            target.scrollIntoView({
+        backTop.addEventListener("click", () => {
+
+            window.scrollTo({
+                top: 0,
                 behavior: "smooth"
             });
 
-        }, 300);
+        });
 
     }
 
-}
+
+    /* =====================================================
+       OPEN ARTICLE FROM URL HASH
+    ===================================================== */
+
+    function openArticleFromHash() {
+
+        const hash =
+            window.location.hash;
+
+        if (!hash) return;
+
+        const target =
+            document.querySelector(hash);
+
+        if (
+            target &&
+            target.classList.contains("article")
+        ) {
+
+            target.classList.add("open");
+
+        }
+
+    }
+
+
+    openArticleFromHash();
+
+    window.addEventListener(
+        "hashchange",
+        openArticleFromHash
+    );
+
+});
