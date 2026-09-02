@@ -762,41 +762,48 @@ h2 em {
 
 .article-content {
 
-    display: grid;
-
-    grid-template-rows: 0fr;
-
-    transition: grid-template-rows .4s ease;
-
-}
-
-
-.article-content > * {
+    max-height: 0;
 
     overflow: hidden;
 
-    min-height: 0;
+    opacity: 0;
 
-}
-
-
-.article.open .article-content {
-
-    grid-template-rows: 1fr;
-
-}
-
-
-.article.open .article-content {
+    visibility: hidden;
 
     padding-left: 80px;
-
     padding-right: 30px;
+
+    transition:
+        max-height .45s ease,
+        opacity .25s ease,
+        padding-bottom .45s ease,
+        visibility 0s linear .45s;
+
+}
+
+
+/* OPEN ARTICLE */
+
+.article.open .article-content {
+
+    max-height: 3000px;
+
+    opacity: 1;
+
+    visibility: visible;
 
     padding-bottom: 35px;
 
+    transition:
+        max-height .5s ease,
+        opacity .3s ease,
+        padding-bottom .5s ease,
+        visibility 0s linear 0s;
+
 }
 
+
+/* ARTICLE TEXT */
 
 .article-content p {
 
@@ -825,7 +832,6 @@ h2 em {
     padding: 4px 0;
 
 }
-
 
 /* =========================================================
    MEANING
@@ -1693,14 +1699,19 @@ footer p {
     }
 
 
-    .article.open .article-content {
+   .article-content {
 
-        padding-left: 48px;
+    padding-left: 48px;
+    padding-right: 0;
 
-        padding-right: 0;
+}
 
-    }
+.article.open .article-content {
 
+    padding-left: 48px;
+    padding-right: 0;
+
+}
 
     .meaning-box,
     .officer-list {
