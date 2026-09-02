@@ -1,0 +1,1747 @@
+/* =========================================================
+   IT-GIRLS — CONSTITUTION & BY-LAWS
+   Theme: Green / Burgundy / Gold / Parchment
+========================================================= */
+
+:root {
+
+    --green: #5b8869;
+    --dark-green: #31543f;
+
+    --cream: #f5ecd8;
+    --paper: #fffaf0;
+
+    --gold: #c5a34b;
+    --light-gold: #e1c878;
+
+    --red: #84161a;
+    --dark-red: #5d0e12;
+
+    --black: #17130f;
+    --gray: #766c5c;
+
+    --line: rgba(23, 19, 15, .18);
+
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    background: var(--cream);
+
+    color: var(--black);
+
+    font-family: "Manrope", sans-serif;
+
+    line-height: 1.7;
+
+    overflow-x: hidden;
+
+}
+
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+button,
+input {
+    font-family: inherit;
+}
+
+
+/* =========================================================
+   PAPER GRAIN
+========================================================= */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 100;
+
+    opacity: .045;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.navbar {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 78px;
+
+    padding: 0 6vw;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    z-index: 90;
+
+    background: rgba(49, 84, 63, .95);
+
+    color: white;
+
+    backdrop-filter: blur(12px);
+
+    border-bottom: 1px solid rgba(255,255,255,.15);
+
+}
+
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+
+.brand-circle {
+
+    width: 40px;
+    height: 40px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    border: 1px solid var(--light-gold);
+
+    color: var(--light-gold);
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 11px;
+
+}
+
+
+.brand strong {
+
+    display: block;
+
+    font-size: 14px;
+
+    letter-spacing: .15em;
+
+}
+
+
+.brand small {
+
+    display: block;
+
+    color: var(--light-gold);
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 8px;
+
+    letter-spacing: .08em;
+
+}
+
+
+.navbar nav {
+
+    display: flex;
+
+    gap: 30px;
+
+}
+
+
+.navbar nav a {
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 9px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .12em;
+
+    opacity: .8;
+
+    transition: .25s;
+
+}
+
+
+.navbar nav a:hover {
+
+    color: var(--light-gold);
+
+    opacity: 1;
+
+}
+
+
+.menu-button {
+
+    display: none;
+
+    border: 0;
+
+    background: none;
+
+    color: white;
+
+    font-size: 25px;
+
+    cursor: pointer;
+
+}
+
+
+.mobile-menu {
+
+    display: none;
+
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+
+    min-height: 100vh;
+
+    padding: 130px 8vw 90px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    align-items: center;
+
+    gap: 7vw;
+
+    background: var(--green);
+
+    color: var(--cream);
+
+}
+
+
+.hero-image {
+
+    position: relative;
+
+    display: grid;
+
+    place-items: center;
+
+}
+
+
+.logo-frame {
+
+    width: min(43vw, 520px);
+
+    aspect-ratio: 1;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    background: var(--cream);
+
+    border: 9px solid var(--black);
+
+    box-shadow:
+        0 25px 0 rgba(20, 10, 5, .18),
+        0 30px 60px rgba(0,0,0,.18);
+
+}
+
+
+.logo-frame img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+}
+
+
+.laurel {
+
+    position: absolute;
+
+    color: var(--light-gold);
+
+    font-family: Georgia, serif;
+
+    font-size: 130px;
+
+    line-height: 1;
+
+    opacity: .9;
+
+}
+
+
+.laurel.left {
+
+    left: 0;
+
+    top: 2%;
+
+    transform: rotate(-35deg);
+
+}
+
+
+.laurel.right {
+
+    right: 0;
+
+    top: 2%;
+
+    transform: scaleX(-1) rotate(-35deg);
+
+}
+
+
+.hero-content {
+
+    max-width: 650px;
+
+}
+
+
+.eyebrow {
+
+    margin-bottom: 20px;
+
+    color: var(--light-gold);
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 9px;
+
+    letter-spacing: .17em;
+
+}
+
+
+.hero h1 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(65px, 8vw, 120px);
+
+    line-height: .85;
+
+    letter-spacing: -.05em;
+
+    font-weight: 600;
+
+}
+
+
+.hero h1 span {
+
+    display: block;
+
+    color: var(--light-gold);
+
+    font-style: italic;
+
+}
+
+
+.subtitle {
+
+    margin-top: 28px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 27px;
+
+}
+
+
+.motto {
+
+    margin-top: 30px;
+
+    padding-top: 18px;
+
+    border-top: 1px solid rgba(255,255,255,.3);
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 11px;
+
+}
+
+
+.motto span {
+
+    color: var(--light-gold);
+
+    font-weight: normal;
+
+}
+
+
+.enter-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    margin-top: 40px;
+
+    padding: 13px 20px;
+
+    border: 1px solid rgba(255,255,255,.45);
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 9px;
+
+    transition: .25s;
+
+}
+
+
+.enter-button:hover {
+
+    background: var(--cream);
+
+    color: var(--dark-green);
+
+}
+
+
+.enter-button span {
+
+    font-size: 17px;
+
+}
+
+
+/* =========================================================
+   GENERAL SECTIONS
+========================================================= */
+
+.section-label {
+
+    margin-bottom: 18px;
+
+    color: var(--red);
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 9px;
+
+    letter-spacing: .17em;
+
+}
+
+
+h2 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-weight: 600;
+
+    line-height: .88;
+
+    letter-spacing: -.04em;
+
+}
+
+
+h2 em {
+
+    color: var(--red);
+
+}
+
+
+/* =========================================================
+   PREAMBLE
+========================================================= */
+
+.preamble {
+
+    padding: 130px 9vw;
+
+    background: var(--paper);
+
+}
+
+
+.preamble-grid {
+
+    display: grid;
+
+    grid-template-columns: .8fr 1.2fr;
+
+    gap: 9vw;
+
+}
+
+
+.preamble h2 {
+
+    font-size: clamp(55px, 7vw, 95px);
+
+}
+
+
+.preamble-text {
+
+    max-width: 720px;
+
+}
+
+
+.preamble-text p {
+
+    color: var(--gray);
+
+}
+
+
+.preamble-text .large-text {
+
+    margin-bottom: 24px;
+
+    color: var(--black);
+
+    font-size: 20px;
+
+    line-height: 1.65;
+
+}
+
+
+/* =========================================================
+   CONSTITUTION
+========================================================= */
+
+.constitution {
+
+    padding: 120px 7vw;
+
+    background: var(--cream);
+
+}
+
+
+.constitution-header {
+
+    display: flex;
+
+    align-items: end;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    margin-bottom: 45px;
+
+}
+
+
+.constitution-header h2 {
+
+    font-size: clamp(55px, 7vw, 95px);
+
+}
+
+
+.tools {
+
+    display: flex;
+
+    gap: 10px;
+
+}
+
+
+.search-box {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 9px 13px;
+
+    min-width: 240px;
+
+    border: 1px solid var(--line);
+
+    background: var(--paper);
+
+}
+
+
+.search-box input {
+
+    width: 100%;
+
+    border: 0;
+
+    outline: 0;
+
+    background: transparent;
+
+    font-size: 12px;
+
+}
+
+
+#expandAll {
+
+    padding: 10px 15px;
+
+    border: 1px solid var(--black);
+
+    background: var(--black);
+
+    color: var(--paper);
+
+    cursor: pointer;
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 9px;
+
+}
+
+
+/* =========================================================
+   ARTICLES
+========================================================= */
+
+.articles {
+
+    border-top: 1px solid var(--black);
+
+}
+
+
+.article {
+
+    border-bottom: 1px solid var(--line);
+
+}
+
+
+.article-header {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: 80px 1fr 30px;
+
+    align-items: center;
+
+    padding: 25px 0;
+
+    border: 0;
+
+    background: transparent;
+
+    color: var(--black);
+
+    text-align: left;
+
+    cursor: pointer;
+
+}
+
+
+.article-number {
+
+    color: var(--red);
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 11px;
+
+}
+
+
+.article-name {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 31px;
+
+    font-weight: 600;
+
+}
+
+
+.plus {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 25px;
+
+    text-align: right;
+
+    transition: .3s;
+
+}
+
+
+.article.open .plus {
+
+    color: var(--red);
+
+    transform: rotate(45deg);
+
+}
+
+
+/* =========================================================
+   ARTICLE CONTENT
+========================================================= */
+
+.article-content {
+
+    display: grid;
+
+    grid-template-rows: 0fr;
+
+    transition: grid-template-rows .4s ease;
+
+}
+
+
+.article-content > * {
+
+    overflow: hidden;
+
+    min-height: 0;
+
+}
+
+
+.article.open .article-content {
+
+    grid-template-rows: 1fr;
+
+}
+
+
+.article.open .article-content {
+
+    padding-left: 80px;
+
+    padding-right: 30px;
+
+    padding-bottom: 35px;
+
+}
+
+
+.article-content p {
+
+    margin-bottom: 18px;
+
+    max-width: 1000px;
+
+    color: #51483b;
+
+}
+
+
+.article-content ol {
+
+    padding-left: 25px;
+
+    max-width: 1000px;
+
+    color: #51483b;
+
+}
+
+
+.article-content li {
+
+    padding: 4px 0;
+
+}
+
+
+/* =========================================================
+   MEANING
+========================================================= */
+
+.meaning-box {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 250px);
+
+    gap: 12px;
+
+    margin-top: 25px;
+
+}
+
+
+.meaning-box div {
+
+    padding: 18px;
+
+    border-left: 3px solid var(--gold);
+
+    background: #eadbb4;
+
+}
+
+
+.meaning-box strong {
+
+    display: block;
+
+    color: var(--red);
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 10px;
+
+}
+
+
+.meaning-box span {
+
+    display: block;
+
+    margin-top: 5px;
+
+    color: var(--gray);
+
+    font-size: 13px;
+
+}
+
+
+/* =========================================================
+   MEMBERSHIP
+========================================================= */
+
+.membership-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 12px;
+
+    margin: 25px 0;
+
+}
+
+
+.membership-grid div {
+
+    padding: 20px;
+
+    border: 1px solid var(--line);
+
+    background: rgba(255,250,240,.65);
+
+}
+
+
+.membership-grid strong {
+
+    color: var(--red);
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 10px;
+
+}
+
+
+.membership-grid p {
+
+    margin-top: 8px;
+
+    font-size: 13px;
+
+}
+
+
+/* =========================================================
+   OFFICERS
+========================================================= */
+
+.officer-list {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    max-width: 800px;
+
+    gap: 10px;
+
+    margin-top: 25px;
+
+}
+
+
+.officer-list div {
+
+    padding: 14px 17px;
+
+    background: rgba(255,250,240,.65);
+
+    font-size: 13px;
+
+}
+
+
+.officer-list span {
+
+    margin-right: 12px;
+
+    color: var(--red);
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 9px;
+
+}
+
+
+/* =========================================================
+   DUTIES
+========================================================= */
+
+.duties {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 15px;
+
+}
+
+
+.duty {
+
+    padding: 22px;
+
+    border: 1px solid var(--line);
+
+    background: rgba(255,250,240,.55);
+
+}
+
+
+.duty h3 {
+
+    margin-bottom: 10px;
+
+    color: var(--red);
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 28px;
+
+}
+
+
+/* =========================================================
+   VISION / MISSION
+========================================================= */
+
+.vision {
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 18px;
+
+}
+
+
+.vision > div {
+
+    padding: 30px;
+
+    background: var(--dark-green);
+
+    color: var(--cream);
+
+}
+
+
+.vision p {
+
+    color: var(--cream);
+
+    margin-top: 15px;
+
+}
+
+
+.mini-label {
+
+    color: var(--light-gold);
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 10px;
+
+    letter-spacing: .15em;
+
+}
+
+
+/* =========================================================
+   DISCIPLINE
+========================================================= */
+
+.warning .article-number,
+.warning .article-name {
+
+    color: var(--red);
+
+}
+
+
+.zero-tolerance {
+
+    margin: 22px 0;
+
+    padding: 20px;
+
+    border: 1px solid var(--red);
+
+    background: #f3dfcf;
+
+    color: var(--dark-red);
+
+}
+
+
+.zero-tolerance strong {
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 10px;
+
+}
+
+
+.zero-tolerance p {
+
+    margin-top: 8px;
+
+    color: var(--dark-red);
+
+}
+
+
+/* =========================================================
+   BY-LAWS
+========================================================= */
+
+.bylaws {
+
+    padding: 125px 7vw;
+
+    background: var(--dark-green);
+
+    color: var(--cream);
+
+}
+
+
+.bylaws-heading {
+
+    max-width: 750px;
+
+    margin-bottom: 55px;
+
+}
+
+
+.bylaws-heading .section-label {
+
+    color: var(--light-gold);
+
+}
+
+
+.bylaws h2 {
+
+    font-size: clamp(55px, 7vw, 95px);
+
+}
+
+
+.bylaws-heading p {
+
+    margin-top: 25px;
+
+    max-width: 600px;
+
+    color: #d8cebb;
+
+}
+
+
+.bylaw-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 18px;
+
+}
+
+
+.bylaw {
+
+    padding: 30px;
+
+    background: var(--paper);
+
+    color: var(--black);
+
+    transition: .25s;
+
+}
+
+
+.bylaw:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow: 0 15px 35px rgba(0,0,0,.18);
+
+}
+
+
+.bylaw > span {
+
+    color: var(--red);
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 9px;
+
+    letter-spacing: .12em;
+
+}
+
+
+.bylaw h3 {
+
+    margin: 4px 0 18px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 34px;
+
+    line-height: 1;
+
+}
+
+
+.bylaw ol {
+
+    padding-left: 20px;
+
+    color: #5b5245;
+
+    font-size: 13px;
+
+}
+
+
+.bylaw li {
+
+    padding: 4px 0;
+
+}
+
+
+.order {
+
+    grid-column: span 2;
+
+    background: #e8d8aa;
+
+}
+
+
+.agenda {
+
+    display: grid;
+
+    gap: 8px;
+
+    margin-top: 15px;
+
+}
+
+
+.agenda div {
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 11px;
+
+}
+
+
+.agenda b {
+
+    display: inline-block;
+
+    width: 38px;
+
+    color: var(--red);
+
+}
+
+
+/* =========================================================
+   ADOPTION
+========================================================= */
+
+.adoption {
+
+    padding: 120px 9vw;
+
+    display: grid;
+
+    grid-template-columns: 250px 1fr;
+
+    align-items: center;
+
+    gap: 8vw;
+
+    background: var(--paper);
+
+}
+
+
+.adoption-logo {
+
+    overflow: hidden;
+
+    border: 7px solid var(--black);
+
+    border-radius: 50%;
+
+}
+
+
+.adoption-logo img {
+
+    width: 100%;
+
+    display: block;
+
+}
+
+
+.adoption h2 {
+
+    margin-bottom: 20px;
+
+    font-size: clamp(60px, 7vw, 100px);
+
+}
+
+
+.adoption > div > p {
+
+    max-width: 750px;
+
+    color: var(--gray);
+
+}
+
+
+.signatures {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 28px 45px;
+
+    margin-top: 45px;
+
+}
+
+
+.signatures div {
+
+    display: grid;
+
+    gap: 8px;
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 11px;
+
+}
+
+
+.signatures span {
+
+    color: var(--red);
+
+    font-size: 8px;
+
+    letter-spacing: .1em;
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+
+    padding: 35px 7vw;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    background: var(--dark-red);
+
+    color: var(--cream);
+
+}
+
+
+footer strong {
+
+    display: block;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 28px;
+
+    letter-spacing: .12em;
+
+}
+
+
+footer span {
+
+    color: var(--light-gold);
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 8px;
+
+}
+
+
+footer p {
+
+    color: var(--light-gold);
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 8px;
+
+}
+
+
+#backTop {
+
+    padding: 9px 13px;
+
+    border: 1px solid rgba(255,255,255,.35);
+
+    background: transparent;
+
+    color: var(--cream);
+
+    cursor: pointer;
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 9px;
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .navbar {
+
+        height: 70px;
+
+    }
+
+
+    .navbar nav {
+
+        display: none;
+
+    }
+
+
+    .menu-button {
+
+        display: block;
+
+    }
+
+
+    .mobile-menu {
+
+        position: fixed;
+
+        top: 70px;
+
+        left: 0;
+
+        right: 0;
+
+        z-index: 89;
+
+        padding: 25px 7vw;
+
+        background: var(--dark-green);
+
+        color: white;
+
+        border-bottom: 1px solid rgba(255,255,255,.15);
+
+    }
+
+
+    .mobile-menu.open {
+
+        display: grid;
+
+        gap: 15px;
+
+    }
+
+
+    .mobile-menu a {
+
+        font-family: "Space Mono", monospace;
+
+        font-size: 10px;
+
+        text-transform: uppercase;
+
+    }
+
+
+    .hero {
+
+        grid-template-columns: 1fr;
+
+        text-align: center;
+
+        padding-top: 110px;
+
+    }
+
+
+    .hero-content {
+
+        order: 1;
+
+    }
+
+
+    .hero-image {
+
+        order: 2;
+
+    }
+
+
+    .logo-frame {
+
+        width: min(72vw, 440px);
+
+    }
+
+
+    .laurel {
+
+        display: none;
+
+    }
+
+
+    .motto {
+
+        max-width: 500px;
+
+        margin-left: auto;
+
+        margin-right: auto;
+
+    }
+
+
+    .preamble-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+
+    }
+
+
+    .constitution-header {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+    }
+
+
+    .tools {
+
+        width: 100%;
+
+    }
+
+
+    .search-box {
+
+        flex: 1;
+
+    }
+
+
+    .membership-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .vision {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .bylaw-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .order {
+
+        grid-column: auto;
+
+    }
+
+
+    .adoption {
+
+        grid-template-columns: 160px 1fr;
+
+        gap: 35px;
+
+    }
+
+}
+
+
+@media (max-width: 560px) {
+
+    .hero {
+
+        padding: 100px 6vw 70px;
+
+    }
+
+
+    .hero h1 {
+
+        font-size: 58px;
+
+    }
+
+
+    .hero .subtitle {
+
+        font-size: 23px;
+
+    }
+
+
+    .preamble,
+    .constitution,
+    .bylaws,
+    .adoption {
+
+        padding: 80px 6vw;
+
+    }
+
+
+    .tools {
+
+        flex-direction: column;
+
+    }
+
+
+    .search-box {
+
+        min-width: 0;
+
+    }
+
+
+    .article-header {
+
+        grid-template-columns: 48px 1fr 24px;
+
+    }
+
+
+    .article-name {
+
+        font-size: 26px;
+
+    }
+
+
+    .article.open .article-content {
+
+        padding-left: 48px;
+
+        padding-right: 0;
+
+    }
+
+
+    .meaning-box,
+    .officer-list {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .duties {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .adoption {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .adoption-logo {
+
+        width: 180px;
+
+    }
+
+
+    .signatures {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    footer {
+
+        flex-wrap: wrap;
+
+    }
+
+}
